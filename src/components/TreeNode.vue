@@ -371,12 +371,18 @@
       },
       showContextMenu(event) {
         if (this.renaming) {
-          this.cancelRenaming()
+          this.cancelRenaming();
         }
-        this.select()
-        if(this.contextMenu && !this.data.disableCtx) {
+        this.select();
+
+        if (this.data.disableCtx) {
           event.preventDefault();
-          EventBus.$emit('openNodeContextMenuInternal', { event, node: this })
+          return;
+        }
+
+        if(this.contextMenu) {
+          event.preventDefault();
+          EventBus.$emit('openNodeContextMenuInternal', { event, node: this });
         }
       },
       delete() {
