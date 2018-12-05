@@ -374,7 +374,7 @@
           this.cancelRenaming()
         }
         this.select()
-        if(this.contextMenu) {
+        if(this.contextMenu && !this.data.disableCtx) {
           event.preventDefault();
           EventBus.$emit('openNodeContextMenuInternal', { event, node: this })
         }
